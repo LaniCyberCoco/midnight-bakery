@@ -7,26 +7,35 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1> Midnight Bakery</h1>
-<p> Fresh Pastries, Boba, Mochi donuts</p>
-<ul>
-    <li>Croissant 3.00</li>
-    <li>Boba 4.50</li>
-    <li>Mochi Donuts 5.00</li>
-</ul>
+<section class="hero">
+  <h1>Midnight Bakery</h1>
+  <p>Mochi donuts, boba, and sweet treats after dark ✨</p>
+</section>
+<h2 class="section-title">Today's Favorites</h2>
+<div class="product-grid">
 <div class="product-card">
-  <h2>Croissant</h2>
-  <p>Buttery, flaky, and fresh.</p>
-  <p>$3.00</p>
-  <button class="add-to-order">Add to Order</button>
-</div>
+<img src="images/churro-mochi.png" alt="Croissant" class="product-image">
+<p>Chewy mochi donut with a sweet cinnamon sugar coating.</p>
+<p>$3.75</p>
+    <button class="add-to-order">Add to Order</button>
+</row>
 
-<div class="product-card">
-  <h2>Latte</h2>
-  <p>Rich espresso with steamed milk.</p>
-  <p>$4.00</p>
+  </div>
+  <div class="product-card">
+<img src="images/ube-tea.png" alt="Tea" class="product-image">
+<p>Creamy taro milk tea with sweet ube flavor and chewy boba.</p>
+<p>$6.75</p>
   <button class="add-to-order">Add to Order</button>
 </div>
+<div class="product-card">
+<img src="images/korean-dog.png" alt="Korean Corn Dog" class="product-image">
+  <p>Crispy panko coating with your choice of hot dog, mozzarella, or half & half.</p>
+  <p>$6.50</p>
+<button class="add-to-order">Add to Order</button>
+</row>
+</div>
+</div>
+</section>
 
 <p>Items in order: <span id="orderCount">0</span></p>
 
