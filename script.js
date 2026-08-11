@@ -1,17 +1,34 @@
 const addButtons = document.querySelectorAll(".add-to-order");
 
+
 let orderCount = 0;
 let orderTotal = 0;
-
+const cart = {};
 
 addButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     orderCount++;
     const price = Number(button.dataset.price);
     const productName = button.dataset.name;
+    if (cart[productName]) {
+  cart[productName].quantity++;
+} else {
+  cart[productName] = {
+    price: price,
+    quantity: 1
+  };
+}
 const cartItems = document.getElementById("cartItems");
+cartItems.innerHTML = "";
 
-cartItems.innerHTML += `<p>${productName} — $${price.toFixed(2)}</p>`;
+for (const itemName in cart) {
+  const item = cart[itemName];
+  const itemTotal = item.price * item.quantity;
+
+  cartItems.innerHTML += `
+    <p>${itemName} × ${item.quantity} — $${itemTotal.toFixed(2)}</p>
+  `;
+}
 orderTotal += price;
 document.getElementById("orderCount").textContent = orderCount;
 document.getElementById("orderTotal").textContent = orderTotal.toFixed(2);  });
