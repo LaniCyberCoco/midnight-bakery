@@ -89,3 +89,31 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.order-now-btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 22px;
+  background: white;
+  color: #2b1838;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.order-now-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+.order-title {
+  margin-top: 30px;
+  margin-bottom: 6px;
+  font-size: 30px;
+}
+
+.order-subtitle {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #666;
+}

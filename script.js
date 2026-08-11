@@ -1,12 +1,20 @@
 const addButtons = document.querySelectorAll(".add-to-order");
 
 let orderCount = 0;
+let orderTotal = 0;
+
 
 addButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     orderCount++;
-    document.getElementById("orderCount").textContent = orderCount;
-  });
+    const price = Number(button.dataset.price);
+    const productName = button.dataset.name;
+const cartItems = document.getElementById("cartItems");
+
+cartItems.innerHTML += `<p>${productName} — $${price.toFixed(2)}</p>`;
+orderTotal += price;
+document.getElementById("orderCount").textContent = orderCount;
+document.getElementById("orderTotal").textContent = orderTotal.toFixed(2);  });
 });
 
 const bakeryInfo = {
