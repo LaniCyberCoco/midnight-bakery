@@ -12,107 +12,134 @@
   <section class="hero">
     <h1>Midnight Bakery</h1>
     <p>Mochi donuts, boba, and sweet treats after dark ✨</p>
-    <a href="#order" class="order-now-btn">Order Now</a>
   </section>
 
   <div id="order"></div>
 
-  <h2 class="section-title">Today's Favorites</h2>
+  <section class="order-chat-layout">
 
-  <h2 class="order-title">Build Your Order</h2>
-  <p class="order-subtitle">
-    Choose your favorites and add them to your order.
-  </p>
+    <div class="order-area">
 
-  <div class="product-grid">
+      <h2 class="order-title">Build Your Order</h2>
 
-    <div class="product-card">
-      <img
-        src="images/churro-mochi.png"
-        alt="Churro Mochi Donut"
-        class="product-image"
-      >
-
-      <h2>Churro Mochi Donut</h2>
-
-      <p>Chewy mochi donut with a sweet cinnamon sugar coating.</p>
-      <p>$3.75</p>
-
-      <button
-        class="add-to-order"
-        data-name="Churro Mochi Donut"
-        data-price="3.75"
-      >
-        Add to Order
-      </button>
-    </div>
-
-
-    <div class="product-card">
-      <img
-        src="images/ube-tea.png"
-        alt="Ube Milk Tea"
-        class="product-image"
-      >
-
-      <h2>Ube Milk Tea</h2>
-
-      <p>Creamy taro milk tea with sweet ube flavor and chewy boba.</p>
-      <p>$6.75</p>
-
-      <button
-        class="add-to-order"
-        data-name="Ube Milk Tea"
-        data-price="6.75"
-      >
-        Add to Order
-      </button>
-    </div>
-
-
-    <div class="product-card">
-      <img
-        src="images/korean-dog.png"
-        alt="Korean Corn Dog"
-        class="product-image"
-      >
-
-      <h2>Korean Corn Dog</h2>
-
-      <p>
-        Crispy panko coating with your choice of hot dog,
-        mozzarella, or half & half.
+      <p class="order-subtitle">
+        Choose your favorites and add them to your order.
       </p>
 
-      <p>$6.50</p>
+      <div class="product-grid">
 
-      <button
-        class="add-to-order"
-        data-name="Korean Corn Dog"
-        data-price="6.50"
-      >
-        Add to Order
-      </button>
+        <div class="product-card">
+          <img
+            src="images/churro-mochi.png"
+            alt="Churro Mochi Donut"
+            class="product-image"
+          >
+
+          <h2>Churro Mochi Donut</h2>
+
+          <p>Chewy mochi donut with a sweet cinnamon sugar coating.</p>
+
+          <p>$3.75</p>
+
+          <button
+            class="add-to-order"
+            data-name="Churro Mochi Donut"
+            data-price="3.75"
+          >
+            Add to Order
+          </button>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="images/ube-tea.png"
+            alt="Ube Milk Tea"
+            class="product-image"
+          >
+
+          <h2>Ube Milk Tea</h2>
+
+          <p>Creamy taro milk tea with sweet ube flavor and chewy boba.</p>
+
+          <p>$6.75</p>
+
+          <button
+            class="add-to-order"
+            data-name="Ube Milk Tea"
+            data-price="6.75"
+          >
+            Add to Order
+          </button>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="images/korean-dog.png"
+            alt="Korean Corn Dog"
+            class="product-image"
+          >
+
+          <h2>Korean Corn Dog</h2>
+
+          <p>
+            Crispy panko coating with your choice of hot dog,
+            mozzarella, or half & half.
+          </p>
+
+          <p>$6.50</p>
+
+          <button
+            class="add-to-order"
+            data-name="Korean Corn Dog"
+            data-price="6.50"
+          >
+            Add to Order
+          </button>
+        </div>
+
+      </div>
+
+      <section class="cart-summary">
+        <h3>Your Order</h3>
+
+        <div id="cartItems"></div>
+
+        <p>
+          Items in order:
+          <span id="orderCount">0</span>
+        </p>
+
+        <p>
+          Total: $<span id="orderTotal">0.00</span>
+        </p>
+      </section>
+
     </div>
 
-  </div>
+    <section class="chatbot">
+      <h2>Ask Midnight Bakery ✨</h2>
 
+      <div id="chatMessages">
+        <p>
+          <strong>Midnight Bot:</strong>
+          Hi! Ask me about donuts, drinks, cakes, or corn dogs.
+        </p>
+      </div>
 
-  <section class="cart-summary">
-    <h3>Your Order</h3>
+      <section class="chat-input">
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Ask a question..."
+        >
 
-    <div id="cartItems"></div>
+        <button id="sendMessage">
+          Send
+        </button>
+      </section>
+    </section>
 
-    <p>
-      Items in order:
-      <span id="orderCount">0</span>
-    </p>
-
-    <p>
-      Total: $<span id="orderTotal">0.00</span>
-    </p>
   </section>
-
 
   <section class="customer-info">
     <h3>Pickup Details</h3>
@@ -129,7 +156,9 @@
       placeholder="Phone number"
     >
 
-    <label for="pickupTime">Pickup time</label>
+    <label for="pickupTime">
+      Pickup time
+    </label>
 
     <input
       type="time"
@@ -142,31 +171,6 @@
 
     <p id="orderConfirmation"></p>
   </section>
-
-
-  <section class="chatbot">
-    <h2>Ask Midnight Bakery ✨</h2>
-
-    <div id="chatMessages">
-      <p>
-        <strong>Midnight Bot:</strong>
-        Hi! Ask me about donuts, drinks, cakes, or corn dogs.
-      </p>
-    </div>
-
-    <section class="chat-input">
-      <input
-        type="text"
-        id="chatInput"
-        placeholder="Ask a question..."
-      >
-
-      <button id="sendMessage">
-        Send
-      </button>
-    </section>
-  </section>
-
 
   <script src="script.js"></script>
 
