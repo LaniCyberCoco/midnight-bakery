@@ -117,3 +117,38 @@
   margin-bottom: 20px;
   color: #666;
 }
+
+.customer-info {
+  margin-top: 30px;
+  max-width: 600px;
+  background: white;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.customer-info input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+#placeOrder {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px;
+  background-color: #2b1838;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#placeOrder:hover {
+  opacity: 0.9;
+}

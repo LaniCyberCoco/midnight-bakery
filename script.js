@@ -6,7 +6,6 @@ const cart = {};
 
 const cartItems = document.getElementById("cartItems");
 
-// Displays everything currently in the cart
 function renderCart() {
   cartItems.innerHTML = "";
 
@@ -24,7 +23,6 @@ function renderCart() {
     `;
   }
 
-  // Find the Remove buttons AFTER they are created
   const removeButtons = document.querySelectorAll(".remove-item");
 
   removeButtons.forEach(function (removeButton) {
@@ -37,7 +35,6 @@ function renderCart() {
         orderCount--;
         orderTotal -= cart[name].price;
 
-        // If quantity reaches zero, remove product completely
         if (cart[name].quantity <= 0) {
           delete cart[name];
         }
@@ -52,7 +49,6 @@ function renderCart() {
   });
 }
 
-// Add to Order buttons
 addButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     const price = Number(button.dataset.price);
@@ -78,9 +74,6 @@ addButtons.forEach(function (button) {
   });
 });
 
-
-// MIDNIGHT BAKERY CHATBOT
-
 const bakeryInfo = {
   mochi:
     "Our featured mochi donut is Churro for $3.75. We also offer rotating specialty flavors.",
@@ -103,6 +96,34 @@ const bakeryInfo = {
   matcha:
     "If you love matcha, try a Matcha Mochi Donut, Matcha Latte, or Matcha Crepe Cake."
 };
+
+const placeOrderButton = document.getElementById("placeOrder");
+const orderConfirmation = document.getElementById("orderConfirmation");
+
+placeOrderButton.addEventListener("click", function () {
+  const customerName = document.getElementById("customerName").value;
+  const customerPhone = document.getElementById("customerPhone").value;
+  const pickupTime = document.getElementById("pickupTime").value;
+
+  if (
+    customerName.trim() === "" ||
+    customerPhone.trim() === "" ||
+    pickupTime === ""
+  ) {
+    orderConfirmation.textContent =
+      "Please fill out your name, phone number, and pickup time.";
+    return;
+  }
+
+  if (orderCount === 0) {
+    orderConfirmation.textContent =
+      "Please add at least one item to your order.";
+    return;
+  }
+
+  orderConfirmation.textContent =
+    `Thanks, ${customerName}! Your order is confirmed for ${pickupTime}.`;
+});
 
 const chatInput = document.getElementById("chatInput");
 const sendMessageButton = document.getElementById("sendMessage");
@@ -156,9 +177,10 @@ sendMessageButton.addEventListener("click", function () {
 
   chatMessages.innerHTML += `
     <p>
-      <strong>Midnight Bot:</strong> ${botReply}
+    <strong>Midnight Bot:</strong> ${botReply}
     </p>
   `;
 
   chatInput.value = "";
 });
+
