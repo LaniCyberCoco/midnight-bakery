@@ -81,9 +81,9 @@ const bakeryInfo = {
     specialtyFlavors: "rotating"
   },
 
-botReply =
-  `Our featured mochi donut is ${bakeryInfo.mochi.featuredFlavor} for $${bakeryInfo.mochi.price}. ` +
-  `We also offer ${bakeryInfo.mochi.specialtyFlavors} specialty flavors.`;
+  mochi:
+    "Our featured mochi donut is Churro for $3.75. We also offer rotating specialty flavors.",
+
   boba:
     "Our Ube Milk Tea is $6.75, and we also offer other milk teas, fruit teas, smoothies, and toppings.",
 
@@ -176,11 +176,13 @@ sendMessageButton.addEventListener("click", function () {
   } else if (message.includes("matcha")) {
     botReply = bakeryInfo.matcha;
 
-  } else if (
-    message.includes("mochi") ||
-    message.includes("donut")
-  ) {
-    botReply = bakeryInfo.mochi;
+} else if (
+  message.includes("mochi") ||
+  message.includes("donut")
+) {
+  botReply =
+    `Our featured mochi donut is ${bakeryInfo.mochi.featuredFlavor} for $${bakeryInfo.mochi.price.toFixed(2)}. ` +
+    `We also offer ${bakeryInfo.mochi.specialtyFlavors} specialty flavors.`;
 
   } else if (
     message.includes("ube") ||
