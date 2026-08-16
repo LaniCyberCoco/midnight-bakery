@@ -3,31 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Midnight Bakery</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
   <section class="hero">
-    <h1>Midnight Bakery</h1>
-    <p>Mochi donuts, boba, and sweet treats after dark ✨</p>
-  </section>
 
-  <div id="order"></div>
+    <img
+      src="images/Bakery _logo1 (1).png"
+      alt="Midnight Bakery Logo"
+      class="hero-logo"
+    >
 
-  <section class="order-chat-layout">
+</section>
+ <div id="order"></div>
+      <img
+        src="images/Order_Icon (2).png"
+        alt="Build Your Order"
+        class="order-icon"
+      >     
+      <section class="order-chat-layout">
 
-    <div class="order-area">
-
-      <h2 class="order-title">Build Your Order</h2>
-
-      <p class="order-subtitle">
-        Choose your favorites and add them to your order.
-      </p>
-
+  <div class="order-area">
       <div class="product-grid">
-
         <div class="product-card">
           <img
             src="images/churro-mochi.png"
@@ -35,9 +34,11 @@
             class="product-image"
           >
 
-          <h2>Churro Mochi Donut</h2>
+       
 
-          <p>Chewy mochi donut with a sweet cinnamon sugar coating.</p>
+          <p>
+            Chewy mochi donut with a sweet cinnamon sugar coating.
+          </p>
 
           <p>$3.75</p>
 
@@ -57,9 +58,11 @@
             class="product-image"
           >
 
-          <h2>Ube Milk Tea</h2>
+          
 
-          <p>Creamy taro milk tea with sweet ube flavor and chewy boba.</p>
+          <p>
+            Creamy taro milk tea with sweet ube flavor and chewy boba.
+          </p>
 
           <p>$6.75</p>
 
@@ -79,8 +82,6 @@
             class="product-image"
           >
 
-          <h2>Korean Corn Dog</h2>
-
           <p>
             Crispy panko coating with your choice of hot dog,
             mozzarella, or half & half.
@@ -98,26 +99,33 @@
         </div>
 
       </div>
+        
+<section class="checkout-area">
+<section class="cart-summary">
 
-      <section class="cart-summary">
-        <h3>Your Order</h3>
+  <div class="order-row">
 
-        <div id="cartItems"></div>
+    <h3 class="section-pill">Your Order</h3>
 
-        <p>
-          Items in order:
-          <span id="orderCount">0</span>
-        </p>
+    <div id="cartItems"></div>
 
-        <p>
-          Total: $<span id="orderTotal">0.00</span>
-        </p>
+    <p>
+      Items in order:
+      <span id="orderCount">0</span>
+    </p>
+
+    <p class="total-line">
+      Total: $<span id="orderTotal">0.00</span>
+    </p>
+
+  </div>
+
       </section>
 
     </div>
 
     <section class="chatbot">
-      <h2>Ask Midnight Bakery ✨</h2>
+      <h2 class="section-pill">Ask Midnight Bakery ✨</h2>
 
       <div id="chatMessages">
         <p>
@@ -141,8 +149,11 @@
 
   </section>
 
-  <section class="customer-info">
-    <h3>Pickup Details</h3>
+
+
+<section class="customer-info">
+  <div class="pickup-row">
+    <h3 class="section-pill">Pickup Details</h3>
 
     <input
       type="text"
@@ -156,21 +167,22 @@
       placeholder="Phone number"
     >
 
-    <label for="pickupTime">
-      Pickup time
-    </label>
+    <label for="pickupTime" class="pickup-label">Pickup time</label>
 
     <input
       type="time"
       id="pickupTime"
     >
 
-    <button id="placeOrder">
-      Place Order
-    </button>
+    <button id="placeOrder">Place Order</button>
+  </div>
+
+  <p id="orderConfirmation"></p>
+</section>    </button>
+    </section>
 
     <p id="orderConfirmation"></p>
-  </section>
+  </section></section>
 
   <script src="script.js"></script>
 

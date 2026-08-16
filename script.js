@@ -75,9 +75,15 @@ addButtons.forEach(function (button) {
 });
 
 const bakeryInfo = {
-  mochi:
-    "Our featured mochi donut is Churro for $3.75. We also offer rotating specialty flavors.",
+   mochi: {
+    featuredFlavor: "Churro",
+    price: 3.75,
+    specialtyFlavors: "rotating"
+  },
 
+botReply =
+  `Our featured mochi donut is ${bakeryInfo.mochi.featuredFlavor} for $${bakeryInfo.mochi.price}. ` +
+  `We also offer ${bakeryInfo.mochi.specialtyFlavors} specialty flavors.`;
   boba:
     "Our Ube Milk Tea is $6.75, and we also offer other milk teas, fruit teas, smoothies, and toppings.",
 
@@ -128,8 +134,25 @@ placeOrderButton.addEventListener("click", function () {
 const chatInput = document.getElementById("chatInput");
 const sendMessageButton = document.getElementById("sendMessage");
 const chatMessages = document.getElementById("chatMessages");
+const midnightBotPersonality = {
+  name: "Midnight Bot",
+  tone: "warm, playful, helpful, slightly magical",
+  style: "short, friendly answers",
+  rules: [
+    "Do not invent menu items, prices, ingredients, allergens, or policies.",
+    "If information is unknown, say you do not know.",
+    "Stay focused on Midnight Bakery.",
+    "Offer helpful suggestions without being pushy.",
+    "Keep answers concise."
+  ]
+};
 
 sendMessageButton.addEventListener("click", function () {
+  chatInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    sendMessageButton.click();
+  }
+});
   const userMessage = chatInput.value;
 
   if (userMessage.trim() === "") {
