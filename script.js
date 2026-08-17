@@ -72,20 +72,23 @@ addButtons.forEach(function (button) {
 
     renderCart();
   });
-});
-
-const bakeryInfo = {
-   mochi: {
+});const bakeryInfo = {
+  mochi: {
     featuredFlavor: "Churro",
     price: 3.75,
     specialtyFlavors: "rotating"
   },
 
-  mochi:
-    "Our featured mochi donut is Churro for $3.75. We also offer rotating specialty flavors.",
-
-  boba:
-    "Our Ube Milk Tea is $6.75, and we also offer other milk teas, fruit teas, smoothies, and toppings.",
+  boba: {
+    featuredDrink: "Ube Milk Tea",
+    price: 6.75,
+    categories: [
+      "milk teas",
+      "fruit teas",
+      "smoothies"
+    ],
+    toppingsAvailable: true
+  },
 
   cake:
     "Whole cakes require at least 72 hours notice and a 50% non-refundable deposit.",
@@ -102,7 +105,6 @@ const bakeryInfo = {
   matcha:
     "If you love matcha, try a Matcha Mochi Donut, Matcha Latte, or Matcha Crepe Cake."
 };
-
 const placeOrderButton = document.getElementById("placeOrder");
 const orderConfirmation = document.getElementById("orderConfirmation");
 
@@ -134,6 +136,7 @@ placeOrderButton.addEventListener("click", function () {
 const chatInput = document.getElementById("chatInput");
 const sendMessageButton = document.getElementById("sendMessage");
 const chatMessages = document.getElementById("chatMessages");
+
 const midnightBotPersonality = {
   name: "Midnight Bot",
   tone: "warm, playful, helpful, slightly magical",
@@ -147,12 +150,13 @@ const midnightBotPersonality = {
   ]
 };
 
-sendMessageButton.addEventListener("click", function () {
-  chatInput.addEventListener("keydown", function (event) {
+chatInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     sendMessageButton.click();
   }
 });
+
+sendMessageButton.addEventListener("click", function () {
   const userMessage = chatInput.value;
 
   if (userMessage.trim() === "") {
@@ -176,19 +180,21 @@ sendMessageButton.addEventListener("click", function () {
   } else if (message.includes("matcha")) {
     botReply = bakeryInfo.matcha;
 
-} else if (
-  message.includes("mochi") ||
-  message.includes("donut")
-) {
-  botReply =
-    `Our featured mochi donut is ${bakeryInfo.mochi.featuredFlavor} for $${bakeryInfo.mochi.price.toFixed(2)}. ` +
-    `We also offer ${bakeryInfo.mochi.specialtyFlavors} specialty flavors.`;
+  } else if (
+    message.includes("mochi") ||
+    message.includes("donut")
+  ) {
+    botReply =
+      `Our featured mochi donut is ${bakeryInfo.mochi.featuredFlavor} for $${bakeryInfo.mochi.price.toFixed(2)}. ` +
+      `We also offer ${bakeryInfo.mochi.specialtyFlavors} specialty flavors.`;
 
   } else if (
     message.includes("ube") ||
     message.includes("boba")
   ) {
-    botReply = bakeryInfo.boba;
+    botReply =
+      `Our featured drink is ${bakeryInfo.boba.featuredDrink} for $${bakeryInfo.boba.price.toFixed(2)}. ` +
+      `We also offer ${bakeryInfo.boba.categories.join(", ")} and toppings.`;
 
   } else if (message.includes("cake")) {
     botReply = bakeryInfo.cake;
