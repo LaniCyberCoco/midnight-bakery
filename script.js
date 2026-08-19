@@ -190,7 +190,9 @@ sendMessageButton.addEventListener("click", function () {
 
   } else if (
     message.includes("ube") ||
-    message.includes("boba")
+    message.includes("boba") ||
+    message.includes("milk tea") ||
+    message.includes("drink") ||
   ) {
     botReply =
       `Our featured drink is ${bakeryInfo.boba.featuredDrink} for $${bakeryInfo.boba.price.toFixed(2)}. ` +
