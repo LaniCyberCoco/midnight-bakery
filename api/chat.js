@@ -53,10 +53,14 @@ ${message}
 
     const data = await response.json();
 
-    if (!response.ok) {
-      console.error(data);
-      return res.status(500).json({ error: "AI request failed" });
-    }
+   if (!response.ok) {
+  console.error("OpenAI error:", data);
+
+  return res.status(response.status).json({
+    error: "AI request failed",
+    details: data?.error?.message || data
+  });
+}
 
     return res.status(200).json({
       reply: data.output?.[0]?.content?.[0]?.text || "I'm having a little bakery-brain moment. Try again!"
