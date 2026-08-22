@@ -156,7 +156,7 @@ chatInput.addEventListener("keydown", function (event) {
   }
 });
 
-sendMessageButton.addEventListener("click", function () {
+sendMessageButton.addEventListener("click", async function () {
   const userMessage = chatInput.value;
 
   if (userMessage.trim() === "") {
@@ -169,51 +169,48 @@ sendMessageButton.addEventListener("click", function () {
     </p>
   `;
 
-  let botReply =
-    "I'm still learning. Try asking about mochi donuts, boba, cakes, or corn dogs.";
-
-  const message = userMessage.toLowerCase();
-
-  if (message.includes("whole cake")) {
-    botReply = bakeryInfo.wholeCake;
-
-  } else if (message.includes("matcha")) {
-    botReply = bakeryInfo.matcha;
-
-  } else if (
-    message.includes("mochi") ||
-    message.includes("donut")
-  ) {
-    botReply =
-      `Our featured mochi donut is ${bakeryInfo.mochi.featuredFlavor} for $${bakeryInfo.mochi.price.toFixed(2)}. ` +
-      `We also offer ${bakeryInfo.mochi.specialtyFlavors} specialty flavors.`;
-
-  } else if (
-    message.includes("ube") ||
-    message.includes("boba") ||
-    message.includes("milk tea") ||
-    message.includes("drink") ||
-  ) {
-    botReply =
-      `Our featured drink is ${bakeryInfo.boba.featuredDrink} for $${bakeryInfo.boba.price.toFixed(2)}. ` +
-      `We also offer ${bakeryInfo.boba.categories.join(", ")} and toppings.`;
-
-  } else if (message.includes("cake")) {
-    botReply = bakeryInfo.cake;
-
-  } else if (message.includes("corn dog")) {
-    botReply = bakeryInfo.cornDog;
-
-  } else if (message.includes("topping")) {
-    botReply = bakeryInfo.toppings;
-  }
+  chatInput.value = "";
 
   chatMessages.innerHTML += `
-    <p>
-    <strong>Midnight Bot:</strong> ${botReply}
+    <p id="thinkingMessage">
+      <strong>Midnight Bot:</strong> Thinking... ✨
     </p>
   `;
 
-  chatInput.value = "";
-});
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: userMessage
+      })
+    });
 
+    const data = await response.json();
+
+    const thinkingMessage = document.getElementById("thinkingMessage");
+
+    if (!response.ok) {
+      thinkingMessage.innerHTML = `
+        <strong>Midnight Bot:</strong>
+        Sorry, I'm having a little bakery-brain moment. Try again! ✨
+      `;
+      return;
+    }
+
+    thinkingMessage.innerHTML = `
+      <strong>Midnight Bot:</strong> ${data.reply}
+    `;
+  } catch (error) {
+    console.error(error);
+
+    const thinkingMessage = document.getElementById("thinkingMessage");
+
+    thinkingMessage.innerHTML = `
+      <strong>Midnight Bot:</strong>
+      Oops! Something went wrong. Try again in a moment. ✨
+    `;
+  }
+});
